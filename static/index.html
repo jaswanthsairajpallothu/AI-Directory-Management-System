@@ -7,8 +7,66 @@
 </head>
 <body>
   <div class="container">
-    <h1>AI Directory Management System</h1>
-    <div id="list"></div>
+    <header>
+      <h1>AI Directory Management System</h1>
+      <nav class="tabs">
+        <button class="tab-button active" onclick="showTab('suggestions')">Suggestions</button>
+        <button class="tab-button" onclick="showTab('config')">Configuration</button>
+        <button class="tab-button" onclick="showTab('training')">Model Training</button>
+      </nav>
+    </header>
+
+    <div id="suggestions" class="tab-content active">
+      <h2>Pending Suggestions</h2>
+      <div id="suggestion-list">
+        </div>
+    </div>
+
+    <div id="config" class="tab-content">
+      <h2>System Configuration</h2>
+      <p>This is the current setup (defined in <code>config.py</code>).</p>
+
+      <div class="config-section">
+        <h3>Watched Directories</h3>
+        <pre id="config-watched"></pre>
+      </div>
+
+      <div class="config-section">
+        <h3>Category Folders</h3>
+        <pre id="config-categories"></pre>
+      </div>
+
+      <div class="config-section">
+        <h3>File Extensions</h3>
+        <pre id="config-extensions"></pre>
+      </div>
+    </div>
+
+    <div id="training" class="tab-content">
+      <h2>Train AI Model</h2>
+      <div class="train-form">
+        <h3>Add New Training Sample</h3>
+        <textarea id="train-text" placeholder="Enter sample text from a file..."></textarea>
+        <select id="train-label">
+          <option value="Invoices">Invoices</option>
+          <option value="Reports">Reports</option>
+          <option value="Resumes">Resumes</option>
+          <option value="Photos">Photos</option>
+          <option value="Others">Others</option>
+        </select>
+        <button id="add-sample-btn">Add Sample</button>
+      </div>
+
+      <div class="train-actions">
+        <button id="train-btn">Train New Model</button>
+        <span id="train-status"></span>
+      </div>
+
+      <h3>Current Training Data (<span id="sample-count">0</span> samples)</h3>
+      <div id="training-data-list">
+        </div>
+    </div>
+
   </div>
   <script src="/static/app.js"></script>
 </body>
