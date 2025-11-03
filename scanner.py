@@ -19,7 +19,7 @@ class _Handler(FileSystemEventHandler):
     def _handle(self, path):
         _, ext = os.path.splitext(path.lower())
         if ext in TEXT_EXTENSIONS + IMAGE_EXTENSIONS:
-            time.sleep(0.2)
+            time.sleep(0.2) # Wait for file to be fully written
             self.q.put(path)
 
 class FileMonitor:
