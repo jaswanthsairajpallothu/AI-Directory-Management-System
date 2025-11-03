@@ -27,11 +27,8 @@ def extract_text(path: str) -> str:
             return ''
 
     if ext in ['.png', '.jpg', '.jpeg']:
-        try:
-            from PIL import Image
-            img = Image.open(path)
-            return ' '.join(f'{k}:{v}' for k, v in img.info.items())
-        except Exception:
-            return ''
-
-    return ''
+        # --- CRITICAL FIX ---
+        # Do not extract metadata as text.
+        # This was confusing the text classifier.
+        # The analyzer will handle images based on extension.
+        return ''
